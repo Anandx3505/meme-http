@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "backend for serving http status codes as meme",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "start": "node src/app.js",
-    "dev": "nodemon src/app.js"
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
   },
   "author": "Anand Chaudhary",
   "license": "ISC",
