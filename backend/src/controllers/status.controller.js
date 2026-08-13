@@ -14,6 +14,12 @@ const defaultFallbackGif = 'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExaTV
 const getAllCodes = asyncHandler(async (req, res) => {
   const codes = await prisma.statusCode.findMany({
     orderBy: { code: 'asc' },
+    select: {
+      code: true,
+      description: true,
+      hits: true,
+      createdAt: true
+    }
   });
   
   res.status(200).json(new ApiResponse(200, codes, 'Status codes fetched successfully'));
