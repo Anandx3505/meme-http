@@ -8,12 +8,9 @@ import { asyncHandler } from '../utils/asyncHandler.js';
 import { ApiError } from '../utils/ApiError.js';
 import { ApiResponse } from '../utils/ApiResponse.js';
 
-// The fallback image for status codes that are missing or have no image
 const defaultFallbackGif = 'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExaTVudmVndDV0cHRwdnE5Zmx6eHpsbmVldnZrcGhzOHJ1ZzdkMmZsOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/g01ZnwAUvutuK8GIQn/giphy.gif';
 
-/**
- * Returns the list of all supported status codes
- */
+// Returns the list of all supported status codes
 const getAllCodes = asyncHandler(async (req, res) => {
   const codes = await prisma.statusCode.findMany({
     orderBy: { code: 'asc' },
@@ -22,9 +19,7 @@ const getAllCodes = asyncHandler(async (req, res) => {
   res.status(200).json(new ApiResponse(200, codes, 'Status codes fetched successfully'));
 });
 
-/**
- * Returns JSON for a specific code
- */
+// Returns JSON for a specific code
 const getCodeJson = asyncHandler(async (req, res) => {
   const code = parseInt(req.params.code, 10);
   
@@ -32,9 +27,10 @@ const getCodeJson = asyncHandler(async (req, res) => {
     throw new ApiError(400, 'Invalid status code format');
   }
 
-  const statusCodeData = await prisma.statusCode.findUnique({
+  const statusCodeData = await prisma.statusCode.update({
     where: { code },
-  });
+    data: { hits: { increment: 1 } }
+  }).catch(() => null);
 
   if (!statusCodeData) {
     throw new ApiError(404, 'Status code not found');
@@ -43,9 +39,7 @@ const getCodeJson = asyncHandler(async (req, res) => {
   res.status(200).json(new ApiResponse(200, statusCodeData, 'Status code fetched successfully'));
 });
 
-/**
- * Returns the image for that code directly without changing the URL
- */
+// Returns the image for that code directly
 const getCodeImage = asyncHandler(async (req, res) => {
   const code = parseInt(req.params.code, 10);
 
@@ -53,25 +47,35 @@ const getCodeImage = asyncHandler(async (req, res) => {
     return res.redirect(defaultFallbackGif);
   }
 
-  const statusCodeData = await prisma.statusCode.findUnique({
+  const statusCodeData = await prisma.statusCode.update({
     where: { code },
-  });
+    data: { hits: { increment: 1 } }
+  }).catch(() => null);
 
   if (statusCodeData && statusCodeData.imageUrl) {
-    // If we downloaded it locally, send the actual file
     if (statusCodeData.imageUrl.startsWith('/images/')) {
       const filePath = path.join(__dirname, '..', '..', 'public', statusCodeData.imageUrl);
       return res.sendFile(filePath);
     }
-    // Otherwise fallback to redirect (e.g. for external URLs)
     res.redirect(statusCodeData.imageUrl);
   } else {
     res.redirect(defaultFallbackGif);
   }
 });
 
+// Returns the top 5 most viewed status codes
+const getTrendingCodes = asyncHandler(async (req, res) => {
+  const trending = await prisma.statusCode.findMany({
+    orderBy: { hits: 'desc' },
+    take: 5
+  });
+
+  res.status(200).json(new ApiResponse(200, trending, 'Trending codes fetched successfully'));
+});
+
 export {
   getAllCodes,
   getCodeJson,
-  getCodeImage
+  getCodeImage,
+  getTrendingCodes
 };
