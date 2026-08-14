@@ -5,7 +5,7 @@ export default function MemeCard({ meme }) {
 
   const handleCopy = () => {
 
-    const embedHtml = `"http://localhost:3000/${meme.code}"`;
+    const embedHtml = `http://localhost:3000/${meme.code}`;
     navigator.clipboard.writeText(embedHtml);
 
     setCopied(true);

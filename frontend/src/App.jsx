@@ -41,7 +41,10 @@ function App() {
   return (
     <>
       <header>
-        <h1>http.meme</h1>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1rem', marginBottom: '0.5rem' }}>
+          <img src="/favicon.webp" alt="logo" style={{ width: '56px', height: '56px', borderRadius: '12px', objectFit: 'cover' }} />
+          <h1 style={{ marginBottom: 0 }}>http.meme</h1>
+        </div>
         <p className="subtitle">Like http.cat, but memes. Click any card to copy the embed HTML.</p>
       </header>
 
@@ -59,8 +62,9 @@ function App() {
               📋
             </button>
           </div>
-          <p className="usage-example">
-            Example: <a href="http://localhost:3000/404" target="_blank" rel="noreferrer">http://localhost:3000/404</a> &bull; Available endpoints: <code>/[code]</code>, <code>/[code]/json</code>
+          <p className="usage-example" style={{ lineHeight: '2' }}>
+            Example: <a href="http://localhost:3000/404" target="_blank" rel="noreferrer">http://localhost:3000/404</a> <br/>
+            Available endpoints: <code>/[code]</code> &bull; <code>/[code]/json</code> &bull; <code>/codes</code> &bull; <code>/trending</code>
           </p>
         </section>
 
