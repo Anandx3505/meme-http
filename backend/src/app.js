@@ -3,23 +3,23 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import statusRoutes from './routes/status.routes.js';
 import { errorHandler } from './middlewares/errorHandler.js';
+import { rateLimitMiddleware } from './middlewares/rateLimiter.js';
 
 const app = express();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Expose the public folder so images can be served directly
+// Apply rate limiting globally to all requests
+app.use(rateLimitMiddleware);
+
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
-// Routes
 app.use('/', statusRoutes);
 
-// Global Error Handler
 app.use(errorHandler);
 
 export { app };
