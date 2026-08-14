@@ -14,8 +14,9 @@ import { asyncHandler } from '../utils/asyncHandler.js';
 
 const rateLimiterOptions = {
   storeClient: redisClient,
+  useRedisPackage: true, // Fix for node-redis v4+ autodetection bug
   keyPrefix: 'middleware',
-  points: 100,
+  points: 300, // Number of requests allowed
   duration: 60,
 };
 
@@ -26,6 +27,7 @@ export const rateLimitMiddleware = asyncHandler(async (req, res, next) => {
     await rateLimiter.consume(req.ip);
     next();
   } catch (rejRes) {
+    console.error('Rate Limiter Error for IP:', req.ip, 'Reason:', rejRes);
     throw new ApiError(429, 'Too many requests, please slow down');
   }
 });
