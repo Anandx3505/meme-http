@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
+const API_BASE = import.meta.env.VITE_API_BASE_URL || 'https://meme-http.onrender.com';
 
 export default function MemeCard({ meme }) {
   const [copied, setCopied] = useState(false);
