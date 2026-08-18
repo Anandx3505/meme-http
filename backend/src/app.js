@@ -21,6 +21,10 @@ app.use(rateLimitMiddleware);
 
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
+app.get('/', (req, res) => {
+  res.status(200).json({ status: 'ok', message: 'Meme HTTP API is running! 🚀' });
+});
+
 app.use('/', statusRoutes);
 
 app.use(errorHandler);
