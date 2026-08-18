@@ -1,0 +1,202 @@
+[
+  {
+    "code": 100,
+    "description": "Continue",
+    "imageUrl": "/images/100.gif"
+  },
+  {
+    "code": 101,
+    "description": "Switching Protocols",
+    "imageUrl": "/images/101.gif"
+  },
+  {
+    "code": 102,
+    "description": "Processing",
+    "imageUrl": "/images/102.gif"
+  },
+  {
+    "code": 103,
+    "description": "Early Hints",
+    "imageUrl": "/images/103.gif"
+  },
+  {
+    "code": 200,
+    "description": "OK",
+    "imageUrl": "/images/200.gif"
+  },
+  {
+    "code": 201,
+    "description": "Created",
+    "imageUrl": "/images/201.gif"
+  },
+  {
+    "code": 202,
+    "description": "Accepted",
+    "imageUrl": "/images/202.gif"
+  },
+  {
+    "code": 204,
+    "description": "No Content",
+    "imageUrl": "/images/204.gif"
+  },
+  {
+    "code": 206,
+    "description": "Partial Content",
+    "imageUrl": "/images/206.gif"
+  },
+  {
+    "code": 301,
+    "description": "Moved Permanently",
+    "imageUrl": "/images/301.gif"
+  },
+  {
+    "code": 302,
+    "description": "Found",
+    "imageUrl": "/images/302.gif"
+  },
+  {
+    "code": 304,
+    "description": "Not Modified",
+    "imageUrl": "/images/304.gif"
+  },
+  {
+    "code": 307,
+    "description": "Temporary Redirect",
+    "imageUrl": "/images/307.gif"
+  },
+  {
+    "code": 308,
+    "description": "Permanent Redirect",
+    "imageUrl": "/images/308.gif"
+  },
+  {
+    "code": 400,
+    "description": "Bad Request",
+    "imageUrl": "/images/400.gif"
+  },
+  {
+    "code": 401,
+    "description": "Unauthorized",
+    "imageUrl": "/images/401.gif"
+  },
+  {
+    "code": 402,
+    "description": "Payment Required",
+    "imageUrl": "/images/402.gif"
+  },
+  {
+    "code": 403,
+    "description": "Forbidden",
+    "imageUrl": "/images/403.gif"
+  },
+  {
+    "code": 404,
+    "description": "Not Found",
+    "imageUrl": "/images/404.gif"
+  },
+  {
+    "code": 405,
+    "description": "Method Not Allowed",
+    "imageUrl": "/images/405.gif"
+  },
+  {
+    "code": 406,
+    "description": "Not Acceptable",
+    "imageUrl": "/images/406.gif"
+  },
+  {
+    "code": 408,
+    "description": "Request Timeout",
+    "imageUrl": "/images/408.gif"
+  },
+  {
+    "code": 409,
+    "description": "Conflict",
+    "imageUrl": "/images/409.gif"
+  },
+  {
+    "code": 410,
+    "description": "Gone",
+    "imageUrl": "/images/410.gif"
+  },
+  {
+    "code": 413,
+    "description": "Payload Too Large",
+    "imageUrl": "/images/413.gif"
+  },
+  {
+    "code": 414,
+    "description": "URI Too Long",
+    "imageUrl": "/images/414.gif"
+  },
+  {
+    "code": 415,
+    "description": "Unsupported Media Type",
+    "imageUrl": "/images/415.gif"
+  },
+  {
+    "code": 418,
+    "description": "I'm a Teapot",
+    "imageUrl": "/images/418.gif"
+  },
+  {
+    "code": 422,
+    "description": "Unprocessable Entity",
+    "imageUrl": "/images/422.gif"
+  },
+  {
+    "code": 425,
+    "description": "Too Early",
+    "imageUrl": "/images/425.gif"
+  },
+  {
+    "code": 429,
+    "description": "Too Many Requests",
+    "imageUrl": "/images/429.gif"
+  },
+  {
+    "code": 451,
+    "description": "Unavailable For Legal Reasons",
+    "imageUrl": "/images/451.gif"
+  },
+  {
+    "code": 500,
+    "description": "Internal Server Error",
+    "imageUrl": "/images/500.gif"
+  },
+  {
+    "code": 501,
+    "description": "Not Implemented",
+    "imageUrl": "/images/501.gif"
+  },
+  {
+    "code": 502,
+    "description": "Bad Gateway",
+    "imageUrl": "/images/502.gif"
+  },
+  {
+    "code": 503,
+    "description": "Service Unavailable",
+    "imageUrl": "/images/503.gif"
+  },
+  {
+    "code": 504,
+    "description": "Gateway Timeout",
+    "imageUrl": "/images/504.gif"
+  },
+  {
+    "code": 507,
+    "description": "Insufficient Storage",
+    "imageUrl": "/images/507.gif"
+  },
+  {
+    "code": 508,
+    "description": "Loop Detected",
+    "imageUrl": "/images/508.gif"
+  },
+  {
+    "code": 511,
+    "description": "Network Authentication Required",
+    "imageUrl": "/images/511.gif"
+  }
+]
