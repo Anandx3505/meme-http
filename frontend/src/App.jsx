@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import MemeCard from './MemeCard';
 
+const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
+
 function App() {
   const [trending, setTrending] = useState([]);
   const [codes, setCodes] = useState([]);
@@ -12,8 +14,8 @@ function App() {
     const fetchData = async () => {
       try {
         const [trendingRes, codesRes] = await Promise.all([
-          fetch('http://localhost:3000/trending'),
-          fetch('http://localhost:3000/codes')
+          fetch(`${API_BASE}/trending`),
+          fetch(`${API_BASE}/codes`)
         ]);
 
         if (!trendingRes.ok || !codesRes.ok) {
@@ -53,17 +55,17 @@ function App() {
           <h2>Usage</h2>
           <div className="usage-code-block glass-panel">
             <span className="method">GET</span>
-            <code className="url">http://localhost:3000/[status_code]</code>
+            <code className="url">{API_BASE}/[status_code]</code>
             <button 
               className="copy-btn" 
-              onClick={() => navigator.clipboard.writeText('http://localhost:3000/')}
+              onClick={() => navigator.clipboard.writeText(`${API_BASE}/`)}
               title="Copy base URL"
             >
               📋
             </button>
           </div>
           <p className="usage-example" style={{ lineHeight: '2' }}>
-            Example: <a href="http://localhost:3000/404" target="_blank" rel="noreferrer">http://localhost:3000/404</a> <br/>
+            Example: <a href={`${API_BASE}/404`} target="_blank" rel="noreferrer">{API_BASE}/404</a> <br/>
             Available endpoints: <code>/[code]</code> &bull; <code>/[code]/json</code> &bull; <code>/codes</code> &bull; <code>/trending</code>
           </p>
         </section>

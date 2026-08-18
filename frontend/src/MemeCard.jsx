@@ -1,11 +1,13 @@
 import { useState } from 'react';
 
+const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
+
 export default function MemeCard({ meme }) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
 
-    const embedHtml = `http://localhost:3000/${meme.code}`;
+    const embedHtml = `${API_BASE}/${meme.code}`;
     navigator.clipboard.writeText(embedHtml);
 
     setCopied(true);
@@ -21,7 +23,7 @@ export default function MemeCard({ meme }) {
 
 
       <img
-        src={`http://localhost:3000/${meme.code}`}
+        src={`${API_BASE}/${meme.code}`}
         alt={`HTTP ${meme.code}`}
         loading="lazy"
       />
